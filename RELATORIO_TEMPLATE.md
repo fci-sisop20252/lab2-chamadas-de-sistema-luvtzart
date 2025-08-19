@@ -13,20 +13,18 @@ strace -e write ./ex1b_write
 ### Análise
 
 **1. Quantas syscalls write() cada programa gerou?**
-- ex1a_printf: _____ syscalls
-- ex1b_write: _____ syscalls
+- ex1a_printf: __9__ syscalls
+- ex1b_write: __7__ syscalls
 
 **2. Por que há diferença entre os dois métodos? Consulte o docs/printf_vs_write.md**
 
-```
-[Sua análise aqui]
-```
+No write ocorre 7 calls, pois possuem sete writes escritos no exercicio 2, necessitando 7 acessos ao console(syscall).
+Ja no print ocorre 9 syscalls, uma vez que possuem nove linhas de texto no arquivo. 
 
 **3. Qual método é mais previsível? Por quê?**
+tres
 
-```
-[Sua análise aqui]
-```
+Write pois o aceesso é mais direto e definido, ja o print pode ocorrer um erro e chamar quantidade de cals diferentes devido ao uso do /n e duplicar uma call
 
 ---
 
