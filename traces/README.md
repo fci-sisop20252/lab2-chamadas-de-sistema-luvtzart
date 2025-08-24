@@ -1,3 +1,6 @@
+
+<img width="1280" height="800" alt="Screenshot from 2025-08-24 22-56-19" src="https://github.com/user-attachments/assets/ee0c7578-686c-4404-b317-d60a9f4128f3" />
+
 # Diretório de Traces
 
 Este diretório armazena as saídas do `strace` geradas durante os exercícios.
