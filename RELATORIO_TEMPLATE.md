@@ -70,44 +70,44 @@ E importante verificar o retorno de cada syscall pois facilita na identificaçã
 ## Exercício 3 - Contador com Loop
 
 ### Resultados (BUFFER_SIZE = 64):
-- Linhas: _____ (esperado: 25)
-- Caracteres: _____
-- Chamadas read(): _____
-- Tempo: _____ segundos
+- Linhas: __25___ (esperado: 25)
+- Caracteres: __1300___
+- Chamadas read(): __21___
+- Tempo: __0.000095___ segundos
 
 ### Experimentos com buffer:
 
 | Buffer Size | Chamadas read() | Tempo (s) |
 |-------------|-----------------|-----------|
-| 16          |                 |           |
-| 64          |                 |           |
-| 256         |                 |           |
-| 1024        |                 |           |
+| 16          |      82         |  0.000167 |
+| 64          |      21         |  0.000095 |
+| 256         |       6         |  0.000060 |
+| 1024        |       2         |  0.000070 |
 
 ### Análise
 
 **1. Como o tamanho do buffer afeta o número de syscalls?**
 
 ```
-[Sua análise aqui]
+Quanto maior o numero do buffer, menor a quantidade de numero de syscalls, aumentando o numero de buffers mais dados podem ser lidos de uma vez.
 ```
 
 **2. Como você detecta o fim do arquivo?**
 
 ```
-[Sua análise aqui]
+O fim do arquivo e detectado quando no loop o read() retorna 0, simbolizando o fim do arquivo. 
 ```
 
 **3. Todas as chamadas read() retornaram BUFFER_SIZE bytes?**
 
 ```
-[Sua análise aqui]
+Nao, alguns reads retornam menos que o tamanho do buffer, depende do tipo da chamada, de quantos bytes restam no arquivo, se ocorre um erro ou se a leitura foi finalizada.
 ```
 
 **4. Qual é a relação entre syscalls e performance?**
 
 ```
-[Sua análise aqui]
+As syscalls impactam a performance devido ao overhead de troca de contexto entre o espaço de usuário e o kernel! Usar maiores buffers diminui o número de syscalls, diminuindo o overhead e melhorando a eficiência, especialmente em operações de leitura e escrita, ou seja, quanto menos syscalls melhor desempenho.
 ```
 
 ---
