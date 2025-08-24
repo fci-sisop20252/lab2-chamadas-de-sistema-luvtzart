@@ -50,19 +50,19 @@ O file descriptor usado foi o terceiro, uma vez que o 0, 1 e 2 estao reservados 
 **2. Como você sabe que o arquivo foi lido completamente?**
 
 ```
-Sabemos que o arquivo foi lido corretamente, pois o numero de bytes lidos foi 127 e o maximo é 128, logo o arquivo inteiro foi lido e sobrou um. Caso 
+Sabemos que o arquivo foi lido corretamente, pois o numero de bytes lidos foi 127 e o maximo é 128, logo o arquivo inteiro foi lido e sobrou um. 
 ```
 
 **3. O que acontece se esquecer de fechar o arquivo?**
 
 ```
-[Sua análise aqui]
+Caso esqueca de fechar o arquivo pode ocorrer o vazamento de dados do arquivo, perdendo dados e ocorrendo erros nao esperados.
 ```
 
 **4. Por que verificar retorno de cada syscall?**
 
 ```
-[Sua análise aqui]
+E importante verificar o retorno de cada syscall pois facilita na identificação de erros, facilitando nas correçoes fazendo com que o codigo funcione de forma segura e funcione como deve.
 ```
 
 ---
