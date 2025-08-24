@@ -47,15 +47,16 @@ int main() {
          * TODO 2: Contar caracteres '\n' no buffer
          */
         for (int i = 0; i < bytes_lidos; i++) {
-            if (buffer[i] = '\n'){
-                total_caracteres += bytes_lidos;
+            if (buffer[i] == '\n'){
+                totallinhas++;
+            }
         }
         
         /*
          * TODO 3: Somar total de caracteres
-         total_caracteres += bytes_lidos;
          */
         /* TODO: total_caracteres += ... */;
+        total_caracteres += bytes_lidos;
         
         if (total_reads % 10 == 0) {
             printf("Processadas %d chamadas read()...\n", total_reads);
