@@ -115,47 +115,47 @@ As syscalls impactam a performance devido ao overhead de troca de contexto entre
 ## Exercício 4 - Cópia de Arquivo
 
 ### Resultados:
-- Bytes copiados: _____
-- Operações: _____
-- Tempo: _____ segundos
-- Throughput: _____ KB/s
+- Bytes copiados: __1364___
+- Operações: __6___
+- Tempo: __0.000274___ segundos
+- Throughput: __4861.43___ KB/s
 
 ### Verificação:
 ```bash
 diff dados/origem.txt dados/destino.txt
 ```
-Resultado: [ ] Idênticos [ ] Diferentes
+Resultado: [X] Idênticos [ ] Diferentes
 
 ### Análise
 
 **1. Por que devemos verificar que bytes_escritos == bytes_lidos?**
 
 ```
-[Sua análise aqui]
+E importante verificar para garantir que o numero de bytes escritos no arquivo sejam iguais aos lidos, evitando o vazamento de dados.
 ```
 
 **2. Que flags são essenciais no open() do destino?**
 
 ```
-[Sua análise aqui]
+As flags essenciais sao O_WRONLY, O_CREAT e O_TRUNC. Cada uma respectivamente abrindo um arquivo para w, criando um arquivo se nao tiver sido criado e e se um arquivo exite apaga e reescreve. Garantindo que o arquivo esteja preparado corretamente segundo as definicoes do ususario.
 ```
 
 **3. O número de reads e writes é igual? Por quê?**
 
 ```
-[Sua análise aqui]
+Sim, pois a cada leitura a uma escrita no arquivo de destino, podendo haver uma divergencia na chamada read().
 ```
 
 **4. Como você saberia se o disco ficou cheio?**
 
 ```
-[Sua análise aqui]
+Para ver se o disco esta cheio o wite retornaria menos bytes do que o esperado, para isso a condicao bytes_escritos != bytes_lidos garante a verificacao desse erro.
 ```
 
 **5. O que acontece se esquecer de fechar os arquivos?**
 
 ```
-[Sua análise aqui]
+Caso haja o esquecimento de fechar os arquivos ocorre o vazamento de dados e memoria, fazendo com que ocorra diversos erros no sistema.
 ```
 
 ---
@@ -167,19 +167,19 @@ Resultado: [ ] Idênticos [ ] Diferentes
 **1. Como as syscalls demonstram a transição usuário → kernel?**
 
 ```
-[Sua análise aqui]
+As syscais sao transicoes entre a execucao do usuario e o kernel, simbolizando o controle do programa e solicitacoes do usuario pelo kernel, permitindo que os programas interajam entre si.
 ```
 
 **2. Qual é o seu entendimento sobre a importância dos file descriptors?**
 
 ```
-[Sua análise aqui]
+Eles sao essesnciais visto a sua importancia com os dados de entrada e saida de arquivos em um sistema, funcionando como leitura ou escrita e permitindo acesso controlado e eficiente aos recursos dos arquivos.
 ```
 
 **3. Discorra sobre a relação entre o tamanho do buffer e performance:**
 
 ```
-[Sua análise aqui]
+O tamanho do buffer tem relacao direta com a performance, quanto maior o tamanho do buffer mais syscals sao realizadas de uma vez, porem acabam por consumir muita memoria e aumentando o overhead do sistema. Quanto menor o buffer maior a performane.
 ```
 
 ### Comparação de Performance
@@ -190,12 +190,12 @@ time ./ex4_copia
 time cp dados/origem.txt dados/destino_cp.txt
 ```
 
-**Qual foi mais rápido?** _____
+**Qual foi mais rápido?** __user___ (nome do meu usuario no oracle virtualbox)
 
 **Por que você acha que foi mais rápido?**
 
 ```
-[Sua análise aqui]
+Ele foi mais rapido pois ele opera diretamente no kernel, otimizando as solicitacoes, caches e syscalls.
 ```
 
 ---
@@ -203,9 +203,9 @@ time cp dados/origem.txt dados/destino_cp.txt
 ## Entrega
 
 Certifique-se de ter:
-- [ ] Todos os códigos com TODOs completados
-- [ ] Traces salvos em `traces/`
-- [ ] Este relatório preenchido como `RELATORIO.md`
+- [X] Todos os códigos com TODOs completados
+- [X] Traces salvos em `traces/`
+- [X] Este relatório preenchido como `RELATORIO.md`
 
 ```bash
 strace -e write -o traces/ex1a_trace.txt ./ex1a_printf
