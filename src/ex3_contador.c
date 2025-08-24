@@ -48,7 +48,7 @@ int main() {
          */
         for (int i = 0; i < bytes_lidos; i++) {
             if (buffer[i] = '\n'){
-                total_linhas ++;
+                total_caracteres += bytes_lidos;
         }
         
         /*
