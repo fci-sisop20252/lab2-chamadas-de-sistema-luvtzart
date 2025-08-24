@@ -31,8 +31,8 @@ Write pois o aceesso é mais direto e definido, ja o print pode ocorrer um erro 
 ## Exercício 2 - Leitura de Arquivo
 
 ### Resultados da execução:
-- File descriptor: _____
-- Bytes lidos: _____
+- File descriptor: 3
+- Bytes lidos: 127
 
 ### Comando strace:
 ```bash
@@ -44,13 +44,13 @@ strace -e openat,read,close ./ex2_leitura
 **1. Qual file descriptor foi usado? Por que não 0, 1 ou 2?**
 
 ```
-[Sua análise aqui]
+O file descriptor usado foi o terceiro, uma vez que o 0, 1 e 2 estao reservados para arquivos de entrada padrao como fopen(), para usar fd - um arquivo que e aberto pelo terminal- ele ira ultilizar um numero maior igual a 3
 ```
 
 **2. Como você sabe que o arquivo foi lido completamente?**
 
 ```
-[Sua análise aqui]
+Sabemos que o arquivo foi lido corretamente, pois o numero de bytes lidos foi 127 e o maximo é 128, logo o arquivo inteiro foi lido e sobrou um. Caso 
 ```
 
 **3. O que acontece se esquecer de fechar o arquivo?**
